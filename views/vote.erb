@@ -1,0 +1,68 @@
+<div id="user_page_wrapper" class="container">
+
+  <% unless @message.nil? %>
+    <div id="message_box_wrapper">
+      <div id="message_box" class="alert alert-<%= @alert_type %> alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong><%= @message %></strong>
+      </div>
+    </div>
+  <% end %>
+
+  <section>
+    <hr class="col-12">
+    <div class="row">
+      <div class="col-sm-4">
+        <h2>Best presentation</h2>
+        <small>Choose any <strong>two presntations</strong> from the list.</small><br>
+        <% if @presentation_vote_existance %>
+          <small class="text-info">You have <strong>already voted</strong>, but you can change your selection by voting again.</small>
+        <% else %>
+          <small class="text-danger">You have <strong>not voted</strong> yet, so please vote!</small>
+        <% end %>
+      </div>
+      <form class="col-sm-8" method="post" action="/users/<%= @user.id %>/vote/best_presentation">
+        <% @presentations.each do |presentation| %>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" name="presentation[]" value="<%= presentation.id %>" <% if presentation.presentation_votes.exists?(voter_id: @user.id) %>checked<% end %>>
+              <a href="/presentations/<%= presentation.id %>"><%= presentation.title %></a> (<%= presentation.presenter.name %>)
+            </label>
+          </div>
+        <% end %>
+        <input type="hidden" name="_method" value="put">
+        <button type="submit" class="btn btn-success">Vote best presentation</button>
+      </form>
+    </div>
+  </section>
+
+  <section>
+    <hr class="col-12">
+    <div class="row">
+      <div class="col-sm-4">
+        <h2>Best questioner</h2>
+        <small>Choose any <strong>two questioners</strong> from the list.</small><br>
+        <% if @questioner_vote_existance %>
+          <small class="text-info">You have <strong>already voted</strong>, but you can change your selection by voting again.</small>
+        <% else %>
+          <small class="text-danger">You have <strong>not voted</strong> yet, so please vote!</small>
+        <% end %>
+      </div>
+      <form class="col-sm-8" method="post" action="/users/<%= @user.id %>/vote/best_questioner">
+        <% @attendees.each do |attendee| %>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" name="questioner[]" value="<%= attendee.id %>" <% if attendee.questioner_votes.exists?(voter_id: @user.id) %>checked<% end %>>
+              <a href="/users/<%= attendee.id %>/profile"><%= attendee.name %></a>
+            </label>
+          </div>
+        <% end %>
+        <input type="hidden" name="_method" value="put">
+        <button type="submit" class="btn btn-success">Vote best questioner</button>
+      </form>
+    </div>
+  </section>
+
+</div>

@@ -1,0 +1,50 @@
+<div id="photo" class="container">
+
+  <div id="photo-header" class="row">
+    <h1 class="col-12">Photo Sharing Place<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadModal"><img src="/vendor/open-iconic/svg/cloud-upload.svg" width="20" height="20" class="d-inline-block align-middle mr-2">Upload photos</button></h1>
+  </div>
+
+  <div id="photo-body">
+    <h5><%= @photo_num %> photos are uploaded. You can download by clicking.</h5>
+    <% @photos.each do |photo| %>
+      <a class="photo-wrapper" href="/photographs/original/<%= photo.file_name %>" download="<%= photo.file_name %>"><img src="/photographs/thumbnail/<%= photo.file_name %>" alt="Uploaded image" class="photo-content"><img src="/vendor/open-iconic/svg/check.svg" class="photo-checker"></a>
+    <% end %>
+  </div>
+
+  <div id="photo-footer">
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group mx-auto" role="group" aria-label="Button group">
+        <% @page_num.times do |i| %>
+          <a href="/photos/<%= i + 1 %>"><button type="button" class="btn btn-outline-info <% if @page == i + 1 %>active<% end %>"><%= i + 1 %></button></a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form method="post" action="/photos/<%= @page %>/upload_photos" enctype="multipart/form-data">
+          <div class="modal-header">
+            <h5 class="modal-title" id="uploadModalLabel">Upload photos to share</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Please make sure you <strong>cannot delete</strong> photos if once uploaded.</p>
+            <label class="custom-file">
+              <span id="slide_file_name_field" class="custom-file-control"></span>
+              <input type="file" id="photo_select_btn" class="custom-file-input" name="photos[]" multiple="multiple" accept="image/*">
+            </label>
+            <div id="preview"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" id="upload_confirmation_btn" disabled="disabled">Upload</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>

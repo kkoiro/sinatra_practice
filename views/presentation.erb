@@ -1,0 +1,108 @@
+<div id="presentation" class="container">
+  <div id="presentation-header" class="row">
+    <div class="col-12">
+      <h1><% if @user.id == @presentation. presenter_id %><button data-toggle="modal" data-target="#editTitleModal" class="d-inline-block mr-2" style="background: transparent; border: none;"><img class="d-inline-block float-left" src="/vendor/open-iconic/svg/pencil.svg" width="30" height="30"></button><% end %><%= @presentation.title %></h1>
+    </div>
+
+    <div class="modal fade" id="editTitleModal" tabindex="-1" role="dialog" aria-labelledby="editTitleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form method="post" action="/presentations/<%= @presentation.id %>/update_title">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editTitleModalLabel">Edit Presentation Title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="newTitle">New Title</label>
+                <input type="text" class="form-control" id="newTitle" name="title" value="<%= @presentation.title %>">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <input type="hidden" name="_method" value="put">
+              <button type="submit" class="btn btn-primary">Update title</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <h4>Presenter: <a href="/users/<%= @presentation.presenter_id %>/profile"><%= @presentation.presenter.name %></a></h4>
+    </div>
+  </div>
+
+  <div id="presentation-body" class="row">
+    <div class="col-12">
+      <% if @presentation.slide %>
+        <div class="embed-responsive w-75 mx-auto" style="height: 600px;">
+          <object data="/files/<%= @presentation_id %>_<%= @presentation.slide_title %>" type="application/pdf"></object>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-12">
+      <p class="mr-5 mt-3 text-right" style="font-size: 1.5rem;"><a href="<%if @presentation.slide %>/files/<%= @presentation_id %>_<%= @presentation.slide_title %><% end %>" target="_blank" id="file_name_link"><%= @presentation.slide_title %><img src="/vendor/open-iconic/svg/external-link.svg" width="20" height="20" class="d-inline-block align-middle ml-2"></a></p>
+    </div>
+
+    <% if @presentation.presenter_id == @user.id %>
+      <div class="col-12">
+        <button type="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#uploadModal">Upload</button>
+        <button type="button" class="btn btn-danger ml-2" data-toggle="modal" data-target="#deleteModal">Delete</button>
+      </div>
+
+      <!-- Modal to upload file -->
+      <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <form method="post" action="/presentations/<%= @presentation_id %>/upload_slide" enctype="multipart/form-data">
+              <div class="modal-header">
+                <h5 class="modal-title" id="uploadModalLabel">Upload your slide</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>Please make sure only <strong>'.pdf'</strong> can be uploaded.</p>
+                <label class="custom-file">
+                  <span id="slide_file_name_field" class="custom-file-control"></span>
+                  <input type="file" id="presenter_slide" class="custom-file-input" name="file" accept="application/pdf">
+                </label>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" disabled="disabled" id="upload_confirmation_btn">Upload</button>
+              </div>
+              <input type="hidden" name="_method" value="put">
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal to delete file -->
+      <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <form method="post" action="/presentations/<%= @presentation_id %>/delete_slide">
+              <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Are you sure?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>This action cannot be undone. This will permanently delete the <strong>'file name'</strong> file.<br>Please type in the name of the file to confirm.</p>
+                <input type="text" class="form-control" name="slide_title">
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-danger" disabled="disabled" id="delete_confirmation_btn">Yes, delete the file</button>
+              </div>
+              <input type="hidden" name="_method" value="delete">
+            </form>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>

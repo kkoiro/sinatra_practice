@@ -1,0 +1,52 @@
+<div id="user_page_wrapper" class="container">
+
+  <% unless @message.nil? %>
+    <div id="message_box_wrapper">
+      <div id="message_box" class="alert alert-<%= @alert_type %> alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong><%= @message %></strong>
+      </div>
+    </div>
+  <% end %>
+
+  <section>
+    <hr class="col-12">
+    <div class="row">
+      <div class="col-sm-4">
+        <h2>User profile</h2>
+      </div>
+      <form class="col-sm-8" method="post" action="/users/<%= @show_user.id %>/profile/update">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" value="<%= @show_user.email %>" <% unless @request_user_id.to_i == @user.id %>disabled<% end %>>
+          <small id="emailHelp" class="form-text text-muted">This is used when you log in. Be careful not to forget.</small>
+        </div>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" name="name" value="<%= @show_user.name %>" <% unless @request_user_id.to_i == @user.id %>disabled<% end %>>
+        </div>
+        <div class="form-group">
+          <label for="organization">Organization</label>
+          <select class="form-control" id="organization" name="organization" <% unless @request_user_id.to_i == @user.id %>disabled<% end %>>
+            <% @organizations.each do |org| %>
+              <option value="<%= org.id %>" <% if org.id == @show_user.organization_id %>selected<% end %>><%= org.name %></option>
+            <% end %>
+          </select>
+        </div>
+        <% if @show_user.presentations.exists? %>
+          <div class="form-group">
+            <p>Presentation</p>
+            <% @show_user.presentations.each do |presentation| %>
+              <div>・[<%= presentation.start_time.strftime("%m/%d") %> <%= presentation.start_time.strftime("%R") %>-<%= presentation.finish_time.strftime("%R") %> @<%= presentation.session.room.name %>]<div class="ml-4" style="word-wrap: break-word;"><a href="/presentations/<%= presentation.id %>"><%= presentation.title %></a></div></div>
+            <% end %>
+          </div>
+        <% end %>
+        <input type="hidden" name="_method" value="put"><br>
+        <button type="submit" class="btn btn-success" <% unless @request_user_id.to_i == @user.id %>hidden<% end %>>Update user profile</button>
+      </form>
+    </div>
+  </section>
+
+</div>

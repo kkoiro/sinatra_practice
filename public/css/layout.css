@@ -1,0 +1,35 @@
+body {
+  /* Do not have to change*/
+  background-image: url(/images/background.jpg);
+  background-repeat: repeat;
+}
+
+.jumbotron {
+  /* Do not have to change*/
+  margin-bottom: 0rem;
+  /* Need some adjustments */
+  background-color: #8FBC8F;
+}
+
+.navbar {
+  /* Do not have to change*/
+  padding: 0rem 4rem;
+  /* Need some adjustments */
+  background-color: #C0C0C0;
+}
+
+.navbar-brand {
+  /* Do not have to change*/
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+footer {
+  /* Do not have to change*/
+  padding: 0.3rem 4rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  /* Need some adjustments */
+  color: #FFFFFF;
+  background-color: #000000;
+}

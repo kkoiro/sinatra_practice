@@ -1,0 +1,74 @@
+<% unless @message.nil? %>
+  <div id="message_box_wrapper" class="container">
+    <div id="message_box" class="alert alert-<%= @alert_type %> alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <strong><%= @message %></strong>
+    </div>
+  </div>
+<% end %>
+
+<section id="title" class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1>Sinatra web site</h1>
+    <h2>for understanding the structure</h2>
+
+      <form id="authentication_form" method="post" action="/login" <% unless @user.nil? %>hidden<% end %>>
+        <div class="form-row">
+          <div class="col-auto">
+            <label class="sr-only" for="email">Email</label>
+            <input type="text" name="email" class="form-control" id="email" placeholder="Your email">
+          </div>
+          <div class="col-auto">
+            <label class="sr-only" for="password">Password</label>
+            <div class="input-group">
+              <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+            </div>
+          </div>
+          <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Login</button>
+          </div>
+        </div>
+      </form>
+
+  </div>
+</section>
+
+<section id="date_venue">
+  <div class="container">
+    <h1 class="text-center">Date & Venue</h1>
+    <hr class="w-25">
+    <table class="table table-hover table-responsive">
+      <tr>
+        <th scope="row" class="w-25">Date</th>
+        <td class="w-75">November 3rd - November 4th, 2017</td>
+      </tr>
+      <tr>
+        <th scope="row" class="w-25">Venue</th>
+        <td class="w-75">Keio University Hiyoshi Campus</td>
+      </tr>
+      <tr>
+        <th scope="row" class="w-25">Address</th>
+        <td class="w-75">4-1-1 Hiyoshi, Kohoku-ku, Yokohama, Kanagawa</td>
+      </tr>
+      <tr>
+        <th scope="row" class="w-25">Access & Campus Map</th>
+        <td class="w-75"><a href="https://www.keio.ac.jp/en/maps/hiyoshi.html" target="_blank">https://www.keio.ac.jp/en/maps/hiyoshi.html</a></td>
+      </tr>
+    </table>
+    <div class="embed-responsive embed-responsive-16by9 w-75">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3246.0453939717586!2d139.64809991559113!3d35.552581080224456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60185f76f3623fd7%3A0x83d88b2cf34be167!2sKeio+University+Hiyoshi+Campus!5e0!3m2!1sen!2sjp!4v1506687517648" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<section id="members">
+  <div class="container">
+    <h1 class="text-center">Members</h1>
+    <hr class="w-25">
+    <div class="row">
+      <div class="col text-left mb-4"><a href="http://test.com"><img src="/images/logos/test_logo.jpg" height="200" alt="test_logo"></a></div>
+    </div>
+  </div>
+</section>

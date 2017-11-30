@@ -1,0 +1,26 @@
+#user_page_wrapper {
+  margin-top: 8rem;
+  margin-bottom: 8rem;
+  padding-top: 0.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 0.5rem;
+  background-color: #FFFFFF;
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
+hr {
+  /* Do not have to change*/
+  opacity: 0.8;
+  margin-right: -15px;
+  margin-left: -15px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-top: 0.15rem;
+  border-style: solid;
+  /* Need some adjustments */
+  color: #6495ED;
+}

@@ -1,0 +1,75 @@
+h1 {
+  font-size: 3.5rem;
+}
+
+#message_box_wrapper {
+  height: 0rem;
+}
+
+#message_box {
+  position: relative;
+  top: 9rem;
+}
+
+section#title {
+  /* Do not have to change*/
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* Need some adjustments */
+  background-image: url(/images/hiyoshi_campus.jpg);
+  color: #FFFFFF;
+  padding-top: 16rem;
+  padding-bottom: 16rem;
+}
+
+#authentication_form {
+  margin-top: 4rem;
+}
+
+section#date_venue {
+  /* Do not have to change*/
+  padding-top: 6rem;
+  padding-bottom: 5rem;
+  /* Need some adjustments */
+  background-color: #C6E6F7;
+  color: #000000;
+}
+
+section#date_venue h1 {
+  /* Do not have to change*/
+  padding-bottom: 2rem;
+  /* Need some adjustments */
+  color: #FFFFFF;
+}
+
+section#date_venue th {
+  /* Do not have to change*/
+  padding-left: 1rem;
+}
+
+section#members {
+  /* Do not have to change*/
+  padding-top: 6rem;
+  padding-bottom: 5rem;
+  /* Need some adjustments */
+  background-color: #F8C3B7;
+  color: #000000;
+}
+
+section#members h1 {
+  /* Do not have to change*/
+  padding-bottom: 2rem;
+  /* Need some adjustments */
+  color: #FFFFFF;
+}
+
+hr {
+  /* Do not have to change*/
+  padding-bottom: 4rem;
+  opacity: 0.8;
+  border-top: 0.3rem;
+  border-style: solid;
+  /* Need some adjustments */
+  border-color: #FFFFFF;
+}

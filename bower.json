@@ -1,0 +1,23 @@
+{
+  "name": "cjk_web",
+  "authors": [
+    "Hiromu Kamei <hk.radwimps@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "popper.js": "^1.12.5",
+    "bootstrap": "v4.0.0-beta",
+    "open-iconic": "^1.1.1"
+  }
+}

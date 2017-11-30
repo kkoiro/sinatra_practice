@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" sizes="any" href="/images/icon.svg" type="image/svg+xml">
+
+    <title>Sinatra web site</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
+    <!-- My CSS -->
+    <link rel="stylesheet" href="/css/layout.css">
+    <% if defined?(@css) %><% @css.each do |css| %><link rel="stylesheet" href="<%= css %>"><% end %><% end %>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-md fixed-top navbar-light">
+        <a class="navbar-brand" href="/"><img src="/images/logos/autoid_logo.svg" width="50" height="50" class="d-inline-block align-middle mr-3" alt="autoid_logo">CJK Workshop</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item px-2">
+              <a class="nav-link" href="/"><img src="/vendor/open-iconic/svg/home.svg" width="20" height="20" class="d-inline-block align-middle mr-2">Home</a>
+            </li>
+            <li class="nav-item px-2">
+              <a class="nav-link" href="/timetables/1"><img src="/vendor/open-iconic/svg/calendar.svg" width="20" height="20" class="d-inline-block align-middle mr-2">Timetable</a>
+            </li>
+            <li class="nav-item px-2">
+              <a class="nav-link" href="/photos/1"><img src="/vendor/open-iconic/svg/camera-slr.svg" width="20" height="20" class="d-inline-block align-middle mr-2">Photo</a>
+            </li>
+            <li class="nav-item dropdown px-2">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/vendor/open-iconic/svg/person.svg" width="20" height="20" class="d-inline-block align-middle mr-2">User</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/users/<%= @user ? @user.id : "0" %>/profile">Profile</a>
+                <a class="dropdown-item" href="/users/<%= @user ? @user.id : "0" %>/password">Password</a>
+                <a class="dropdown-item" href="/users/<%= @user ? @user.id : "0" %>/vote">Vote</a>
+                <% unless @user.nil? %>
+                <div class="dropdown-divider"></div>
+                <form action="/logout" method="post">
+                <button type="submit" class="dropdown-item">Logout</button>
+                </form>
+              <% end %>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <%= yield %>
+
+    <footer>
+      <div>
+        <p class="container text-center">Copyright 2017 kkoiro</p>
+      </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="/vendor/popper.js/dist/umd/popper.js"></script>
+    <script src="/vendor/bootstrap/dist/js/bootstrap.js"></script>
+    <% if defined?(@js) %><% @js.each do |js| %><script src="<%= js %>"></script><% end %><% end %>
+  </body>
+
+</html>

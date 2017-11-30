@@ -1,0 +1,76 @@
+#timetable {
+  /* Do not have to change*/
+  margin-top: 8rem;
+  margin-bottom: 8rem;
+  /* Need some adjustments */
+  background-color: #FFFFFF;
+}
+
+#timetable-header {
+  /* Do not have to change*/
+  border-radius: 1rem 1rem 0rem 0rem!important;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 5rem;
+  /* Need some adjustments */
+  color: #FFFFFF;
+  background-color: #CD5C5C;
+}
+
+#timetable-body {
+  /* Do not have to change*/
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+
+#timetable-body #dates {
+  /* Do not have to change*/
+  font-size: 1rem;
+  padding-bottom: 1rem;
+}
+
+#timetable-body.border {
+  /* Do not have to change*/
+  border-width: 0 0.5rem 0.5rem 0.5rem!important;
+  border-style: solid!important;
+  border-radius: 0rem 0rem 1rem 1rem!important;
+  /* Need some adjustments */
+  border-color: #E9ECEF!important;
+}
+
+.table-bordered th, .table-bordered td {
+  /* Do not have to change*/
+  border-width: 0.15rem;
+  border-style: solid;
+  /* Need some adjustments */
+  border-color: #E9ECEF;
+}
+
+.table th.time {
+  /* Do not have to change*/
+  text-align: center;
+}
+
+.table .w-20 {
+  /* Do not have to change*/
+  width: 20%!important;
+}
+
+.table .w-40 {
+  /* Do not have to change*/
+  width: 40%!important;
+}
+
+.table .session {
+  /* Need some adjustments */
+  color: #FFFFFF;
+  background-color: #B0C4DE;
+}
+
+.table .event {
+  /* Need some adjustments */
+  color: #000000;
+  background-color: #FFF0F5;
+}

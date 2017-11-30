@@ -1,0 +1,8 @@
+.DS_Store
+.bundle/
+vendor/
+db/*.sqlite3
+public/photographs/
+public/files/
+log/
+tmp/

@@ -1,0 +1,44 @@
+<div class="container" id="timetable">
+  <div id="timetable-header" class="row">
+    <h1>November 3<sup>rd</sup>, 2017</h1>
+  </div>
+  <div id="timetable-body" class="row border">
+    <div id="dates" class="col-12">| <a href="/timetables/1">2017-11-3</a> | <a href="/timetables/2">2017-11-4</a> |</div>
+    <table class="table table-bordered col-12">
+
+      <!-- Opening -->
+      <tr class="session">
+        <th class="w-20" scope="row"></th>
+        <th class="w-40" colspan="2">Opening & Reception<br>Room: <%= @sessions[0].room.name %></th>
+      </tr>
+      <tr>
+        <th class="w-20 time" scope="row">09:00-09:25</th>
+        <td class="w-40" colspan="2">Reception</td>
+      </tr>
+      <tr>
+        <th class="w-20 time" scope="row">09:25-09:40</th>
+        <td class="w-40" colspan="2">Opening Speech</td>
+      </tr>
+
+      <!-- Session 1 -->
+      <tr class="session">
+        <th class="w-20" scope="row"></th>
+        <th class="w-40" colspan="2">Session<%= @sessions[0].id %>: <%= @sessions[0].title %><br>Chair: <%= @sessions[0].chairperson.name %><br>Room: <%= @sessions[0].room.name %></th>
+      </tr>
+      <% @presentation_array[0].length.times do |i| %>
+        <tr>
+          <th class="w-20 time" scope="row"><%= @presentation_array[0][i].start_time.strftime("%R") %>-<%= @presentation_array[0][i].finish_time.strftime("%R") %></th>
+          <td class="w-40" colspan="2"><a href="/presentations/<%= @presentation_array[0][i].id %>"><%= @presentation_array[0][i].title %></a><br><%= @presentation_array[0][i].presenter.name %>, <%= @presentation_array[0][i].presenter.organization.name %></td>
+        </tr>
+      <% end %>
+
+      <!-- Coffee Break -->
+      <tr class="event">
+        <th class="w-20 time" scope="row"><%= @presentation_array[0].last.finish_time.strftime("%R") %>-<%= @presentation_array[1].first.start_time.strftime("%R") %></th>
+        <td class="w-40 text-center" colspan="2">Coffee Break</td>
+      </tr>
+
+    </table>
+
+  </div>
+</div>

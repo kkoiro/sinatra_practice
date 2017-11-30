@@ -1,0 +1,83 @@
+#photo {
+  /* Do not have to change*/
+  margin-top: 8rem;
+  margin-bottom: 3rem;
+  padding-bottom: 1rem;
+  /* Need some adjustments */
+  background-color: #FFFFFF;
+}
+
+#photo-header {
+  /* Need some adjustments */
+  background-color: #48D1CC;
+}
+
+#photo-header h1 {
+  /* Do not have to change*/
+  margin: 0rem;
+  padding: 0.5rem 2rem;
+  font-size: 2.5rem;
+  /* Need some adjustments */
+  color: #FFFFFF;
+}
+
+#photo-body h5 {
+  /* Do not have to change*/
+  padding-top: 1rem;
+  padding-left: 0.5rem;
+  padding-bottom: 1rem;
+  background-color: #FFFFFF;
+  color: #FF4500;
+}
+
+#photo-header button {
+  /* Do not have to change*/
+  float: right;
+}
+
+#photo-body {
+  /* Do not have to change*/
+  margin-bottom: 5rem;
+  background-color: #FFFFFF;
+}
+
+#photo-body .photo-wrapper {
+  /* Do not have to change*/
+  position: relative;
+  margin-bottom: 1rem;
+  margin-left: 0.25rem;
+  display: inline-block;
+}
+
+#photo-body .photo-content {
+  /* Do not have to change*/
+  margin-right: 1rem;
+  width: auto;
+  /* Need some adjustments */
+  height: 10rem;
+}
+
+#photo-body .photo-checker {
+  /* Do not have to change*/
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  display: none;
+  /* Need some adjustments */
+  width: 2rem;
+  height: 2rem;
+}
+
+#slide_file_name_field {
+  /* Do not have to change*/
+  padding-right: 6rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#preview img{
+  margin-top: 1rem;
+  margin-right: 1rem;
+  height: 4rem;
+}
